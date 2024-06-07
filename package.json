@@ -12,6 +12,7 @@
     "s": "npx @11ty/eleventy --config=.eleventy.cjs --serve",
     "v": "npx @11ty/eleventy --version",
     "gen": "node scripts/generate-markdown.js \"../GASCompanionDemo 5.0/Saved/DocDoc/GASCompanion.json\" -o src/api",
+    "changelog": "./scripts/changelog.sh",
     "changelog-pr": "node scripts/changelog-pr.js",
     "prenetlify": "npm run build",
     "netlify": "netlify deploy -d public --prod"

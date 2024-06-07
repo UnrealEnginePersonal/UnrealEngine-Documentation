@@ -13,7 +13,6 @@ import remarkGfm from 'remark-gfm';
 import remarkGithub from 'remark-github';
 import { format } from 'date-fns';
 import mkdirp from 'mkdirp';
-import rimraf from 'rimraf';
 
 const token = process.env.GITHUB_TOKEN;
 const user = `GASCompanion`;
@@ -29,6 +28,7 @@ const args = arg({
   // Types
   '--help': Boolean,
   '--version': Boolean,
+  '--all': Boolean,
   '--tag': String,
   '--output': (value, argName, previousValue) => {
     return path.resolve(value);
@@ -38,15 +38,28 @@ const args = arg({
   '-v': '--version',
   '--out': '--output',
   '-o': '--output',
+  '-a': '--all',
   '-t': '--tag',
 });
 
 console.log('arg', args);
 
+const all = args['--all'];
 const tag = args['--tag'];
 const output = args['--output'] || path.resolve('src/changelog/index.md');
 
-console.log(`Using tag "${tag}" to fetch release note`);
+if (!tag && !all) {
+  console.error(`No --tag provided, and not using --all tags`);
+  process.exit(1);
+}
+
+if (tag) {
+  console.log(`Using tag "${tag}" to fetch release note`);
+}
+else if (all) {
+  console.log(`Using -all. Will fetch and generate for all tags.`);
+}
+
 console.log(`Using token "${token}" to fetch release note`);
 console.log(`Using output "${output}" to generate release note`);
 console.log(`---`);
@@ -201,7 +214,7 @@ const fetchImage = (image, dirname) => {
   });
 };
 
-const getReleaseNoteContent = async () => {
+const getReleaseNoteContent = async (tag) => {
   const { body } = await got(`repos/${user}/${repo}/releases/tags/${tag}`);
   console.log(body.body);
   console.log(`---`);
@@ -289,8 +302,11 @@ ${content}
 `;
 };
 
-{
-  const { body } = await got(`repos/${user}/${repo}/releases/tags/${tag}`);
+const generateForTag = async (tag) => {
+  console.log(`Generating release notes PRs for ${tag}`);
+  const url = `repos/${user}/${repo}/releases/tags/${tag}`;
+  console.log(`Fetching url: ${url}`);
+  const { body } = await got(url);
   console.log(body.body);
   console.log(`---`);
 
@@ -299,7 +315,7 @@ ${content}
 
   // Parse and transform markdown of release note
 
-  const { content, pullRequestLinks } = await getReleaseNoteContent();
+  const { content, pullRequestLinks } = await getReleaseNoteContent(tag);
 
   // Fetch and build each Pull Request page
 
@@ -336,4 +352,33 @@ ${endToken}`);
 
   // console.log(file);
   await fs.writeFile(output, file);
+}
+
+const fetchAllReleases = async () => {
+  console.log(`Fetching all releases`)
+  const { body } = await got(`repos/${user}/${repo}/releases`);
+  return body;
+};
+
+const fetchAllTags = async () => {
+  const releases = await fetchAllReleases();
+  return releases.map(release => release.tag_name);
+};
+
+// Main stuff now
+if (tag) {
+  await generateForTag(tag);
+}
+else if (all) {
+  // const releases = await fetchAllReleases();
+  const tags = await fetchAllTags();
+  console.log(tags);
+
+  for (const tag of tags) {
+    await generateForTag(tag);
+  }
+}
+else {
+  console.error(`No --tag or -all provided.`);
+  process.exit(1);
 }
