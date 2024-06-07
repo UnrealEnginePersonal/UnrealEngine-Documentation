@@ -28,8 +28,6 @@ const args = arg({
   // Types
   '--help': Boolean,
   '--version': Boolean,
-  '--all': Boolean,
-  '--tag': String,
   '--output': (value, argName, previousValue) => {
     return path.resolve(value);
   },
@@ -38,35 +36,17 @@ const args = arg({
   '-v': '--version',
   '--out': '--output',
   '-o': '--output',
-  '-a': '--all',
-  '-t': '--tag',
 });
 
 console.log('arg', args);
 
-const all = args['--all'];
-const tag = args['--tag'];
 const output = args['--output'] || path.resolve('src/changelog/index.md');
-
-if (!tag && !all) {
-  console.error(`No --tag provided, and not using --all tags`);
-  process.exit(1);
-}
-
-if (tag) {
-  console.log(`Using tag "${tag}" to fetch release note`);
-}
-else if (all) {
-  console.log(`Using -all. Will fetch and generate for all tags.`);
-}
 
 console.log(`Using token "${token}" to fetch release note`);
 console.log(`Using output "${output}" to generate release note`);
 console.log(`---`);
 
 // https://api.github.com/repos/GASCompanion/GASCompanion-Plugin/releases
-
-// /repos/GASCompanion/GASCompanion-Plugin/releases/tags/6.0.0-preview
 
 // List of heading text we know and always want to have at a fixed 5 lvl heading
 const fixedHeadings = [
@@ -166,7 +146,6 @@ const remarkTransformReleaseNote = (pullRequestLinks) => {
           const match = node.url.match(reg);
 
           if (match) {
-            // console.log(node, match)
             pullRequestLinks.push({
               url: match[0],
               api: `repos/${user}/${repo}/pulls/${match[2]}`
@@ -186,7 +165,6 @@ const remarkTransformReleaseNote = (pullRequestLinks) => {
 };
 
 const fetchPullRequest = async ({ url, api }) => {
-  console.log(`Fetch content of ${url} (API: ${api})`);
   return await got(api);
 };
 
@@ -199,10 +177,10 @@ const fetchImage = (image, dirname) => {
     const downloadStream = goat.stream(image, {
       headers: {
         'authorization': `token ${token}`
-        // 'Authorization': `Bearer ${token}`
       }
-    })
-      .on('error', reject);
+    });
+
+    downloadStream.on('error', reject);
 
     const destination = path.join(dirname, filename + '.png');
     const fileWriterStream = createWriteStream(destination)
@@ -216,8 +194,6 @@ const fetchImage = (image, dirname) => {
 
 const getReleaseNoteContent = async (tag) => {
   const { body } = await got(`repos/${user}/${repo}/releases/tags/${tag}`);
-  console.log(body.body);
-  console.log(`---`);
 
   let pullRequestLinks = [];
 
@@ -265,23 +241,8 @@ const getPullRequestContent = async (tag, result) => {
     .use(remarkStringify)
     .process(body || '');
 
-  console.log('imagesToDownload', imagesToDownload);
-
   const promises = imagesToDownload.map(image => fetchImage(image, path.join(path.dirname(output), `pull/${number}`)));
   Promise.all(promises).catch(console.error);
-
-  //   return `---
-  // title: "Pull Request #${number}"
-  // description: "${title}"
-  // layout: layouts/markdown
-  // ---
-
-  // *[on ${format(new Date(created_at), 'PPP')}](${html_url})*
-
-  // ## ${title}
-
-  // ${content}
-  // `;
 
   return `---
 title: "Pull Request #${number}"
@@ -302,16 +263,12 @@ ${content}
 `;
 };
 
-const generateForTag = async (tag) => {
-  console.log(`Generating release notes PRs for ${tag}`);
+const generateForTag = async (tag, tags = []) => {
   const url = `repos/${user}/${repo}/releases/tags/${tag}`;
+
+  console.log(`Generating release notes PRs for ${tag}`);
   console.log(`Fetching url: ${url}`);
   const { body } = await got(url);
-  console.log(body.body);
-  console.log(`---`);
-
-  // Delete all PR pages
-  // rimraf.sync(path.join(path.dirname(output), 'pull'));
 
   // Parse and transform markdown of release note
 
@@ -319,10 +276,8 @@ const generateForTag = async (tag) => {
 
   // Fetch and build each Pull Request page
 
-  const promises = pullRequestLinks.map(link => fetchPullRequest(link));
-  const results = await Promise.all(promises);
-
-  for (const result of results) {
+  for (const link of pullRequestLinks) {
+    const result = await fetchPullRequest(link);
     const { number } = result.body;
     const dirname = path.join(path.dirname(output), `pull/${number}`);
     await mkdirp(dirname);
@@ -336,26 +291,16 @@ const generateForTag = async (tag) => {
     console.log(`Created file at ${filename}`);
   }
 
-  // Update changelog with new content
-
-  let file = await fs.readFile(output, 'utf8');
-
-  const startToken = `<!-- changelog-pr begin -->`;
-  const endToken = `<!-- changelog-pr end -->`;
-
-  const reg = new RegExp(`${startToken}\[\\s\\S\]*${endToken}`, 'm');
-  file = file.replace(reg, `${startToken}
-## ${body.name} (${format(new Date(body.created_at), 'yyyy-MM-dd')})
+  const date = new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(body.created_at));
+  const releaseNoteContent = `## [${body.name}](https://github.com/${user}/${repo}/releases/tag/${tag}) - ${date}
 
 ${content}
-${endToken}`);
+`;
 
-  // console.log(file);
-  await fs.writeFile(output, file);
+  return releaseNoteContent;
 }
 
 const fetchAllReleases = async () => {
-  console.log(`Fetching all releases`)
   const { body } = await got(`repos/${user}/${repo}/releases`);
   return body;
 };
@@ -365,20 +310,47 @@ const fetchAllTags = async () => {
   return releases.map(release => release.tag_name);
 };
 
-// Main stuff now
-if (tag) {
-  await generateForTag(tag);
-}
-else if (all) {
-  // const releases = await fetchAllReleases();
-  const tags = await fetchAllTags();
-  console.log(tags);
+
+const main = async () => {
+
+  let tags = await fetchAllTags();
+
+  let contents = `---
+title: Changelog
+description: GAS Companion Changelog
+eleventyNavigation:
+parent: More
+key: Changelog
+layout: layouts/markdown
+---
+
+<div class="border rounded-1 mb-4 p-3 color-border-accent-emphasis color-bg-accent f5">
+
+Note that from the 6.0.0 release of this changelog, you can now click on Pull Request links (identified by a number prefixed by a \`#\`) to get further information about the related changes (new features / bugfix, etc.).
+
+With each PR, I tend to put a little bit of documentation and some screenshots about the added features, what it does etc.
+
+They can often serve as the basics of documentation before the website is updated to reflect the changes.
+
+</div>
+
+`;
 
   for (const tag of tags) {
-    await generateForTag(tag);
+    const content = await generateForTag(tag, tags);
+    contents += `
+${content}
+  `;
   }
-}
-else {
-  console.error(`No --tag or -all provided.`);
-  process.exit(1);
-}
+
+  const now = new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date());
+  contents += `
+---
+
+Updated ${now}
+`;
+
+  await fs.writeFile(output, contents)
+};
+
+main();
