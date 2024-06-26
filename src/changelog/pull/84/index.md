@@ -17,3 +17,9 @@ on `UGSCAbilityInputBindingComponent`, allowing one to grab bound input (if any)
 
 Also refactored / fixed GetBoundInputActionForAbility to work with either an instantiated ability or its class default object.
 
+***
+
+![image](./113832-7c78ff36-6917-4323-951e-1fbb4f8593a5.png)
+
+![image](./113832-fe713ae6-787a-4529-852c-9fb1b459b50a.png)
+
