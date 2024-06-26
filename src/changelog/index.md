@@ -18,6 +18,31 @@ They can often serve as the basics of documentation before the website is update
 </div>
 
 
+## [6.1.0](https://github.com/GASCompanion/GASCompanion-Plugin/releases/tag/6.1.0) - Jun 26, 2024
+
+# Release notes
+
+##### New Features 🎉
+
+*   Added GetBoundInputActionForAbilityClass() method for `UGSCAbilityInputBindingComponent` in [#84](./pull/84)
+
+##### Bug Fixes
+
+*   Fixing linux compile errors on 5.4.2 in [#85](./pull/85)
+*   Fix ability sets input binding for PlayerState owned ASC in case of respawns or possession switch in [#86](./pull/86)
+*   Adding failsafe checks on effect delegates before registering listeners in [#87](./pull/87)
+
+##### Other Changes
+
+*   Adding ObjectInitializer default value for all gameplay actors in [#89](./pull/89)
+*   Fixed Health, MaxHealth (and stamina / mana) getters in [#90](./pull/90)
+*   Fixed UGSCUserWidget::GetAttributeValue() usage with invalid attribute preventing crash from happening in [#90](./pull/90)
+*   Tweaked and fix comment for `UGSCUserWidget::GetAttributeValue()` in [#90](./pull/90)
+
+**Full Changelog**: <https://github.com/GASCompanion/GASCompanion-Plugin/compare/6.0.2...6.1>
+
+
+  
 ## [6.0.2](https://github.com/GASCompanion/GASCompanion-Plugin/releases/tag/6.0.2) - Jun 7, 2024
 
 <!-- Release notes generated using configuration in .github/release.yml at ue5-main -->
@@ -396,4 +421,4 @@ Internal: Setting up CI/CD process on github to check package build is successfu
   
 ---
 
-Updated Jun 8, 2024
+Updated Jun 26, 2024
