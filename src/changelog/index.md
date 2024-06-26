@@ -20,8 +20,6 @@ They can often serve as the basics of documentation before the website is update
 
 ## [6.1.0](https://github.com/GASCompanion/GASCompanion-Plugin/releases/tag/6.1.0) - Jun 26, 2024
 
-# Release notes
-
 ##### New Features 🎉
 
 *   Added GetBoundInputActionForAbilityClass() method for `UGSCAbilityInputBindingComponent` in [#84](./pull/84)
