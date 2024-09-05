@@ -162,6 +162,7 @@ const main = async () => {
 
     const require = createRequire(import.meta.url);
     const basedir = path.dirname(path.resolve(jsonPath));
+
     const json = require(path.resolve(jsonPath));
 
     const outputPath = args['--output']
@@ -200,8 +201,6 @@ const main = async () => {
 
     await handleReadme('', 'API', eleventyNavigation, LAYOUT_INDEX, outputPath)
     console.log(dirs)
-
-
 }
 
 main();

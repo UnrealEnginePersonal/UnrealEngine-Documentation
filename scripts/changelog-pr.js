@@ -114,7 +114,6 @@ const remarkRewritePullRequestImageAssetsUrl = (imagesToDownload) => {
   };
 };
 
-
 const remarkTransformReleaseNote = (pullRequestLinks) => {
   return () => {
     return (tree) => {
