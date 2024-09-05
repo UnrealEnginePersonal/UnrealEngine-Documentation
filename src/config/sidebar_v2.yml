@@ -20,12 +20,6 @@
       link: '/v2/config-ga-definitions'
     - label: 'Gameplay Effect Definitions'
       link: '/v2/config-ge-definitions'
-# - label: 'Overview'
-#   items:
-#     - label: 'Abilities'
-#       link: '/v2/ability-overview'
-#     - label: 'Characters'
-#       link: '/v2/character-overview'
 - label: 'Attributes'
   items:
     - label: 'Custom Gameplay Attributes'

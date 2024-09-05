@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_Item</id>
+	<display_name>Kds_Item</display_name>
+	<description>@brief The base actor component class for all items in the KdsCharacter module.
+This class is used to define the basic properties and functionality(like equipping to the character) of items.</description>
+	<sourcepath>Public/Core/Items/Components/Kds_Item.h</sourcepath>
+	<classTree>Object > ActorComponent > Kds_Item</classTree>
+	<properties />
+	<nodes>
+		<node>
+			<id>OnUsed</id>
+			<shorttitle>On Used</shorttitle>
+			<description>@brief Called when the item is used by the character.</description>
+		</node>
+		<node>
+			<id>OnUnequipped</id>
+			<shorttitle>On Unequipped</shorttitle>
+			<description>@brief Called when the item is unequipped from the character.</description>
+		</node>
+		<node>
+			<id>OnPickedUp</id>
+			<shorttitle>On Picked Up</shorttitle>
+			<description>@brief Called when the item is picked up by the character.</description>
+		</node>
+		<node>
+			<id>OnEquipped</id>
+			<shorttitle>On Equipped</shorttitle>
+			<description>@brief Called when the item is equipped to the character.</description>
+		</node>
+		<node>
+			<id>OnDropped</id>
+			<shorttitle>On Dropped</shorttitle>
+			<description>@brief Called when the item is dropped by the character.</description>
+		</node>
+		<node>
+			<id>OnDestroyed</id>
+			<shorttitle>On Destroyed</shorttitle>
+			<description>@brief Called when the item is destroyed.</description>
+		</node>
+	</nodes>
+</root>

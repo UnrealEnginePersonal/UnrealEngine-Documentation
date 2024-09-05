@@ -9,7 +9,7 @@ import theme from "../@mklabs/gatsby-theme-docs/styles/theme"
 
 const Container = styled.header`
     background-color: ${theme.colors.header};
-    padding: 1rem 2rem; 
+    padding: 1rem 2rem;
     font-size: 1.25rem;
     color: ${theme.colors.title};
     margin-bottom: 8px;
@@ -32,7 +32,7 @@ const Container = styled.header`
         nav {
             margin-left: 1em;
             padding-left: 1em;
-            
+
             a {
                 margin-left: 1em;
                 padding-left: 1em;
@@ -44,12 +44,12 @@ const Container = styled.header`
             }
         }
     }
-            
+
     button {
         border: none;
         background: none;
         cursor: pointer;
-        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 
         display: flex;
         align-items: center;
@@ -92,7 +92,7 @@ const Container = styled.header`
 
             background: ${theme.colors.components.dropdown.background};
             border-radius: 8px;
-            box-shadow: 0px 4px 16px rgba(46,41,51,0.08),0px 8px 24px rgba(71,63,79,0.16);
+            box-shadow: 0px 4px 16px rgba(46, 41, 51, 0.08), 0px 8px 24px rgba(71, 63, 79, 0.16);
             width: 32.5rem;
 
             li {
@@ -110,8 +110,8 @@ const Container = styled.header`
                     align-items: flex-start;
                     padding: 0.75rem;
                     padding-left: 3.5rem;
-                    transition: background 500ms cubic-bezier(0.4, 0,0. 2,1);
-                    transition: color 500ms cubic-bezier(0.4, 0,0. 2,1);
+                    transition: background 500ms cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
                     transform: none;
                     display: block;
 
@@ -122,7 +122,7 @@ const Container = styled.header`
                         background: ${theme.colors.link};
                         border-radius: 4px;
                     }
-        
+
                     :after {
                         content: "›";
                         color: rgba(35, 33, 41, 0.4);
@@ -130,12 +130,12 @@ const Container = styled.header`
                     }
                 }
             }
-            
+
             li:first-of-type {
                 padding-top: 0.75rem;
             }
 
-            
+
             li:last-child {
                 padding-bottom: 0.75rem;
             }
@@ -164,6 +164,8 @@ const Container = styled.header`
 `;
 
 const HeaderNavbar = ({ slug = "" }) => {
+    const KdsCharacter = "kdsCharacter"
+
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -189,7 +191,12 @@ const HeaderNavbar = ({ slug = "" }) => {
             return `/v3/install`;
         }
 
-        return `https://gascompanion.github.io`;
+        if(slug.startsWith(`/` + KdsCharacter))
+        {
+            return `/` + KdsCharacter + `/install`;
+        }
+
+        return `https://localhost:9000`;
     };
 
     const getAPIHomeURL = () => {
@@ -201,12 +208,16 @@ const HeaderNavbar = ({ slug = "" }) => {
             return `/v3/api`;
         }
 
+        if(slug.startsWith('/' + KdsCharacter)){
+            return `/` + KdsCharacter + `/install`;
+        }
+
         if (slug.startsWith(`/v5`)) {
-            return `https://gascompanion.github.io/v5/api/`;
+            return `https://localhost:9000/v5/api/`;
         }
 
 
-        return `https://gascompanion.github.io/v5/api/`;
+        return `https://localhost:9000/v5/api/`;
     };
 
     const getButtonLabel = () => {
@@ -218,6 +229,10 @@ const HeaderNavbar = ({ slug = "" }) => {
             return `v3`;
         }
 
+        if(slug.startsWith(`/` + KdsCharacter)) {
+            return KdsCharacter;
+        }
+
         if (slug.startsWith(`/v5`)) {
             return `v5`;
         }
@@ -226,15 +241,22 @@ const HeaderNavbar = ({ slug = "" }) => {
     };
 
     const isV2 = slug.startsWith(`/v2`);
-    const isAPI = slug.startsWith(`/v2/api`) || slug.startsWith(`/v3/api`) || slug.startsWith(`/v5/api`) || slug.startsWith(`/api`);
+    const isAPI =
+        slug.startsWith(`/` + KdsCharacter)
+        || slug.startsWith(`/v2/api`)
+        || slug.startsWith(`/v3/api`)
+        || slug.startsWith(`/v5/api`)
+        || slug.startsWith(`/api`);
 
     const handleMouseOver = (isOn) => {
         setIsDropdownOpened(isOn);
     }
 
+    const kdsCharacterLink = isAPI ? `/KdsCharacter/api` : `/KdsCharacter/install`;
     const v2Link = isAPI ? `/v2/api` : `/v2/install`;
     const v3Link = isAPI ? `/v3/api` : `/v3/install`;
-    const v5Link = isAPI ? `/v5/api` : `https://gascompanion.github.io`;
+
+    const v5Link = isAPI ? `/v5/api` : `https://localhost:9000`;
 
     return (
         <Container className="docs-header">
@@ -276,6 +298,9 @@ const HeaderNavbar = ({ slug = "" }) => {
                 <div className={`v3-dropdown${isDropdownOpened ? ` v3-dropdown-opened` : ``}`}>
                     <ul>
                         <li>
+                            <Link to={kdsCharacterLink}>KdsCharacter</Link>
+                        </li>
+                        <li>
                             <Link to={v5Link}>v5</Link>
                         </li>
                         <li>
@@ -286,7 +311,7 @@ const HeaderNavbar = ({ slug = "" }) => {
                         </li>
                     </ul>
                 </div>
-            </div>            
+            </div>
         </Container>
     );
 }

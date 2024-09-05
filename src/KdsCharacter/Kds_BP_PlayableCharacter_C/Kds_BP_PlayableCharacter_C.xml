@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_BP_PlayableCharacter_C</id>
+	<display_name>Kds_BP_PlayableCharacter</display_name>
+	<description></description>
+	<sourcepath>/KdsCharacter/Characters/Core/Kds_BP_PlayableCharacter</sourcepath>
+	<classTree>Object > Actor > Pawn > Character > AlsCharacter > Kds_CoreCharacter > Kds_PlayableCharacter > Kds_BP_PlayableCharacter</classTree>
+	<properties />
+	<nodes />
+</root>

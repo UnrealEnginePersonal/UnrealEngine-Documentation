@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_CharacterDebugComponent</id>
+	<display_name>Kds_CharacterDebugComponent</display_name>
+	<description>@brief Debug component class for the KdsCharacter module.
+This class extends the UActorComponent class and includes additional functionality
+for handling character-specific debug behavior.</description>
+	<sourcepath>Public/Core/Characters/Components/Kds_CharacterDebugComponent.h</sourcepath>
+	<classTree>Object > ActorComponent > Kds_CharacterDebugComponent</classTree>
+	<properties />
+	<nodes />
+</root>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<display_name>KdsCharacter</display_name>
+	<classes>
+		<class>
+			<id>CharacterMantleSettings</id>
+			<display_name>CharacterMantleSettings</display_name>
+			<group>Kds|Character|Settings</group>
+			<type>C++</type>
+			<description>@brief The settings for mantling</description>
+		</class>
+		<class>
+			<id>Kds_AnimOverlaySettings</id>
+			<display_name>Kds_AnimOverlaySettings</display_name>
+			<group>Kds|Character|Animations</group>
+			<type>C++</type>
+			<description>@brief Animation overlay settings class for the KdsCharacter module.
+This class extends the UDataAsset class and includes properties for managing
+animation overlays based on gameplay tags.</description>
+		</class>
+		<class>
+			<id>Kds_CharacterBaseComponent</id>
+			<display_name>Kds_CharacterBaseComponent</display_name>
+			<group>Kds|Character|Components</group>
+			<type>C++</type>
+			<description>@brief Base component class for the KdsCharacter module.
+This class extends the UActorComponent class and includes additional functionality
+for handling character-specific behavior.</description>
+		</class>
+		<class>
+			<id>Kds_CharacterDebugComponent</id>
+			<display_name>Kds_CharacterDebugComponent</display_name>
+			<group>Kds|Character|Components</group>
+			<type>C++</type>
+			<description>@brief Debug component class for the KdsCharacter module.
+This class extends the UActorComponent class and includes additional functionality
+for handling character-specific debug behavior.</description>
+		</class>
+		<class>
+			<id>Kds_CharacterInputData</id>
+			<display_name>Kds_CharacterInputData</display_name>
+			<group>Kds|Character|Input</group>
+			<type>C++</type>
+			<description>@brief The input data asset for the KdsCharacter module.
+This class holds all the input actions and settings for the KdsCharacter.
+It includes various input actions such as movement, looking around, sprinting,
+walking, crouching, jumping, aiming, and switching view modes. It also includes
+settings for mouse sensitivity and look rates.</description>
+		</class>
+		<class>
+			<id>Kds_CoreCharacter</id>
+			<display_name>Kds_CoreCharacter</display_name>
+			<group>Kds|Character</group>
+			<type>C++</type>
+			<description>@brief Core character class for the KdsCharacter module.
+This class extends the AAlsCharacter class and includes additional functionality
+for handling animation overlay settings and overlay mode changes.</description>
+		</class>
+		<class>
+			<id>Kds_Item</id>
+			<display_name>Kds_Item</display_name>
+			<group>Kds|Character|Items</group>
+			<type>C++</type>
+			<description>@brief The base actor component class for all items in the KdsCharacter module.
+This class is used to define the basic properties and functionality(like equipping to the character) of items.</description>
+		</class>
+		<class>
+			<id>Kds_LinkedAnimInstance</id>
+			<display_name>Kds_LinkedAnimInstance</display_name>
+			<group>Kds|Character|Animations</group>
+			<type>C++</type>
+			<description>@brief Linked animation instance class for the KdsCharacter module.
+This class extends the UAlsLinkedAnimationInstance class and includes additional functionality
+for handling settings related to linked animation instances.</description>
+		</class>
+		<class>
+			<id>Kds_LinkedAnimInstanceSettings</id>
+			<display_name>Kds_LinkedAnimInstanceSettings</display_name>
+			<group>Kds|Character|Animations</group>
+			<type>C++</type>
+			<description>@brief Linked animation instance settings class for the KdsCharacter module.
+This class extends the UDataAsset class and includes properties for managing
+settings related to linked animation instances.</description>
+		</class>
+		<class>
+			<id>Kds_PlayableCharacter</id>
+			<display_name>Kds_PlayableCharacter</display_name>
+			<group>Kds|Character</group>
+			<type>C++</type>
+			<description>@brief Playable character class for the KdsCharacter module.
+This class extends the AKds_CoreCharacter class and includes additional functionality
+for handling the basic movement, this class also handles the input actions for the character and camera.</description>
+		</class>
+		<class>
+			<id>Kds_PlayerController</id>
+			<display_name>Kds_PlayerController</display_name>
+			<group>Kds|Character</group>
+			<type>C++</type>
+			<description>@brief The base player controller class for the KDS project.</description>
+		</class>
+		<class>
+			<id>CR_Als1_C</id>
+			<display_name>CR_Als1</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+		<class>
+			<id>CR_Mannequin_Procedural_C</id>
+			<display_name>CR_Mannequin_Procedural</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+		<class>
+			<id>Kds_BP_PlayableCharacter_C</id>
+			<display_name>Kds_BP_PlayableCharacter</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+		<class>
+			<id>B_Kds_Core_GameMode_C</id>
+			<display_name>B_Kds_Core_GameMode</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+		<class>
+			<id>Kds_BP_PlayerController_C</id>
+			<display_name>Kds_BP_PlayerController</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+		<class>
+			<id>CR_Mannequin_Body_C</id>
+			<display_name>CR_Mannequin_Body</display_name>
+			<type>Blueprint</type>
+			<description></description>
+		</class>
+	</classes>
+	<structs />
+	<enums />
+</root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <docs_name>KdsCharacter</docs_name>
+    <id>CharacterMantleSettings</id>
+    <display_name>CharacterMantleSettings</display_name>
+    <description>@brief The settings for mantling</description>
+    <sourcepath>Public/Core/Characters/Settings/CharacterMantleSettings.h</sourcepath>
+    <classTree>Object > DataAsset > CharacterMantleSettings</classTree>
+    <properties>
+        <property>
+            <type>bool</type>
+            <display_name>RemoveHeldObjectonMantle</display_name>
+            <description>@brief Remove the held object from the hand, when the character mantles.</description>
+        </property>
+    </properties>
+    <nodes/>
+</root>
+

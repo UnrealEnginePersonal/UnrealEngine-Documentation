@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>CR_Mannequin_Body_C</id>
+	<display_name>CR_Mannequin_Body</display_name>
+	<description></description>
+	<sourcepath>/KdsCharacter/Characters/Core/Animations/ALSManny/Animations/Mannequins/Rigs/CR_Mannequin_Body</sourcepath>
+	<classTree>Object > RigVMHost > ControlRig > CR_Mannequin_Body</classTree>
+	<properties>
+		<property>
+			<type>bool</type>
+			<display_name>LArmIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>RArmIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>LLegIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>RLegIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>SpineIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>NeckIKMode</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>TArray</type>
+			<display_name>SpineOffsets</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>double</type>
+			<display_name>SpineLength</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>double</type>
+			<display_name>NeckLength</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>LArmIKAlign</display_name>
+			<description></description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>RArmIKAlign</display_name>
+			<description></description>
+		</property>
+	</properties>
+	<nodes />
+</root>

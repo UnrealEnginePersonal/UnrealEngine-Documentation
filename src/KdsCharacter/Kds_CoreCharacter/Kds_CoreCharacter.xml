@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_CoreCharacter</id>
+	<display_name>Kds_CoreCharacter</display_name>
+	<description>@brief Core character class for the KdsCharacter module.
+This class extends the AAlsCharacter class and includes additional functionality
+for handling animation overlay settings and overlay mode changes.</description>
+	<sourcepath>Public/Core/Characters/Kds_CoreCharacter.h</sourcepath>
+	<classTree>Object > Actor > Pawn > Character > AlsCharacter > Kds_CoreCharacter</classTree>
+	<properties>
+		<property>
+			<type>TObjectPtr<UKds_AnimOverlaySettings></type>
+			<display_name>AnimOverlaySettings</display_name>
+			<description>@brief The settings for the animation overlays.
+See: UKds_AnimOverlaySettings
+
+This property holds the settings for the animation overlays, which determine
+the behavior and appearance of the character's animations.</description>
+		</property>
+	</properties>
+	<nodes />
+</root>

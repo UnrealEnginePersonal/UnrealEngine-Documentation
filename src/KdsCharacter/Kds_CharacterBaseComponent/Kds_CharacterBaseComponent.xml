@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_CharacterBaseComponent</id>
+	<display_name>Kds_CharacterBaseComponent</display_name>
+	<description>@brief Base component class for the KdsCharacter module.
+This class extends the UActorComponent class and includes additional functionality
+for handling character-specific behavior.</description>
+	<sourcepath>Public/Core/Characters/Components/Kds_CharacterBaseComponent.h</sourcepath>
+	<classTree>Object > ActorComponent > Kds_CharacterBaseComponent</classTree>
+	<properties />
+	<nodes>
+		<node>
+			<id>GetCharacterOwner</id>
+			<shorttitle>Get Character Owner</shorttitle>
+			<description>@brief Get the character owner of the component.</description>
+		</node>
+	</nodes>
+</root>

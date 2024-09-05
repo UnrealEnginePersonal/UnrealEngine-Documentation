@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_BP_PlayerController_C</id>
+	<display_name>Kds_BP_PlayerController</display_name>
+	<description></description>
+	<sourcepath>/KdsCharacter/Characters/Core/Kds_BP_PlayerController</sourcepath>
+	<classTree>Object > Actor > Controller > PlayerController > AlsPlayerController > Kds_PlayerController > Kds_BP_PlayerController</classTree>
+	<properties />
+	<nodes />
+</root>

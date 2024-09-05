@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_LinkedAnimInstanceSettings</id>
+	<display_name>Kds_LinkedAnimInstanceSettings</display_name>
+	<description>@brief Linked animation instance settings class for the KdsCharacter module.
+This class extends the UDataAsset class and includes properties for managing
+settings related to linked animation instances.</description>
+	<sourcepath>Public/Core/Animations/Data/Kds_LinkedAnimInstanceSettings.h</sourcepath>
+	<classTree>Object > DataAsset > Kds_LinkedAnimInstanceSettings</classTree>
+	<properties>
+		<property>
+			<type>bool</type>
+			<display_name>PlayImpulseAnimations</display_name>
+			<description>@brief Enable impulse animations. If enabled, the linked animation instance will play impulse animations on sprint.</description>
+		</property>
+	</properties>
+	<nodes />
+</root>

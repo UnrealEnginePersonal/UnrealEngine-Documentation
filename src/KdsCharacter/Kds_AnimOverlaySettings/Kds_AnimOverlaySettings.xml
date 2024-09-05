@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_AnimOverlaySettings</id>
+	<display_name>Kds_AnimOverlaySettings</display_name>
+	<description>@brief Animation overlay settings class for the KdsCharacter module.
+This class extends the UDataAsset class and includes properties for managing
+animation overlays based on gameplay tags.</description>
+	<sourcepath>Public/Core/Animations/Data/Kds_AnimOverlaySettings.h</sourcepath>
+	<classTree>Object > DataAsset > Kds_AnimOverlaySettings</classTree>
+	<properties>
+		<property>
+			<type>TSubclassOf<UKds_LinkedAnimInstance></type>
+			<display_name>DefaultAnimOverlay</display_name>
+			<description>@brief The default fallback overlay animation instance.
+this is used when the character wants to switch overlays,
+              but there is nog overlay found coresponding to the gameplay tag.</description>
+		</property>
+		<property>
+			<type>TMap</type>
+			<display_name>AnimOverlayMap</display_name>
+			<description>@brief The map of gameplay tags to overlay animation instances.
+This is used to determine which overlay to use based on the current overlay mode.</description>
+		</property>
+	</properties>
+	<nodes />
+</root>

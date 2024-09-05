@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<class_id>Kds_Item</class_id>
+	<class_name>Kds_Item</class_name>
+	<shorttitle>On Unequipped</shorttitle>
+	<fulltitle>On Unequipped</fulltitle>
+	<description>@brief Called when the item is unequipped from the character.</description>
+	<imgpath>../img/nd_img_OnUnequipped.png</imgpath>
+	<category>Kds| Character| Items</category>
+	<inputs>
+		<param>
+			<name>In</name>
+			<type>Exec</type>
+			<description></description>
+		</param>
+		<param>
+			<name>Target</name>
+			<type>Kds Item Object Reference</type>
+			<description></description>
+		</param>
+		<param>
+			<name>Character</name>
+			<type>Kds Playable Character Object Reference</type>
+			<description>The character that the item is being unequipped from.</description>
+		</param>
+	</inputs>
+	<outputs>
+		<param>
+			<name>Out</name>
+			<type>Exec</type>
+			<description></description>
+		</param>
+	</outputs>
+</root>

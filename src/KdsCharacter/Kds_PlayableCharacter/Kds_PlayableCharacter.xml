@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_PlayableCharacter</id>
+	<display_name>Kds_PlayableCharacter</display_name>
+	<description>@brief Playable character class for the KdsCharacter module.
+This class extends the AKds_CoreCharacter class and includes additional functionality
+for handling the basic movement, this class also handles the input actions for the character and camera.</description>
+	<sourcepath>Public/Core/Characters/Kds_PlayableCharacter.h</sourcepath>
+	<classTree>Object > Actor > Pawn > Character > AlsCharacter > Kds_CoreCharacter > Kds_PlayableCharacter</classTree>
+	<properties>
+		<property>
+			<type>TObjectPtr<UAlsCameraComponent></type>
+			<display_name>Camera</display_name>
+			<description>@brief The camera component for the character.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UKds_CharacterInputData></type>
+			<display_name>InputData</display_name>
+			<description>@brief The input data for the character.</description>
+		</property>
+	</properties>
+	<nodes />
+</root>

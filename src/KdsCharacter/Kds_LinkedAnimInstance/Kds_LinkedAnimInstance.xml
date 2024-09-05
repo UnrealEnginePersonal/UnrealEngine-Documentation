@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_LinkedAnimInstance</id>
+	<display_name>Kds_LinkedAnimInstance</display_name>
+	<description>@brief Linked animation instance class for the KdsCharacter module.
+This class extends the UAlsLinkedAnimationInstance class and includes additional functionality
+for handling settings related to linked animation instances.</description>
+	<sourcepath>Public/Core/Animations/Kds_LinkedAnimInstance.h</sourcepath>
+	<classTree>Object > AnimInstance > AlsLinkedAnimationInstance > Kds_LinkedAnimInstance</classTree>
+	<properties>
+		<property>
+			<type>TObjectPtr<UKds_LinkedAnimInstanceSettings></type>
+			<display_name>Settings</display_name>
+			<description>@brief The settings for the linked animation instance.
+See: UKds_LinkedAnimInstanceSettings</description>
+		</property>
+	</properties>
+	<nodes />
+</root>

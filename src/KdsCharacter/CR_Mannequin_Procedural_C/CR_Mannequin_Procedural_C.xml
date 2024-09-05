@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>CR_Mannequin_Procedural_C</id>
+	<display_name>CR_Mannequin_Procedural</display_name>
+	<description></description>
+	<sourcepath>/KdsCharacter/Characters/Core/Animations/ALSManny/Animations/Mannequins/Rigs/CR_Mannequin_Procedural</sourcepath>
+	<classTree>Object > RigVMHost > ControlRig > CR_Mannequin_Procedural</classTree>
+	<properties />
+	<nodes />
+</root>

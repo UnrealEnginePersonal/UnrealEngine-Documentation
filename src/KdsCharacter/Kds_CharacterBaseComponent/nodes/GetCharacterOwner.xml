@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<class_id>Kds_CharacterBaseComponent</class_id>
+	<class_name>Kds_CharacterBaseComponent</class_name>
+	<shorttitle>Get Character Owner</shorttitle>
+	<fulltitle>Get Character Owner</fulltitle>
+	<description>@brief Get the character owner of the component.</description>
+	<imgpath>../img/nd_img_GetCharacterOwner.png</imgpath>
+	<category>Kds| Character| Components</category>
+	<inputs>
+		<param>
+			<name>Target</name>
+			<type>Kds Character Base Component Object Reference</type>
+			<description></description>
+		</param>
+	</inputs>
+	<outputs>
+		<param>
+			<name>Out Character Owner</name>
+			<type>Kds Core Character Object Reference</type>
+			<description>The character owner of the component. See: AKds_CoreCharacter This function retrieves the kds character that owns this component.</description>
+		</param>
+	</outputs>
+</root>

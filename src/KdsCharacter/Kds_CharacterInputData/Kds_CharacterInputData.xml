@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_CharacterInputData</id>
+	<display_name>Kds_CharacterInputData</display_name>
+	<description>@brief The input data asset for the KdsCharacter module.
+This class holds all the input actions and settings for the KdsCharacter.
+It includes various input actions such as movement, looking around, sprinting,
+walking, crouching, jumping, aiming, and switching view modes. It also includes
+settings for mouse sensitivity and look rates.</description>
+	<sourcepath>Public/Core/Input/Data/Kds_CharacterInputData.h</sourcepath>
+	<classTree>Object > DataAsset > Kds_CharacterInputData</classTree>
+	<properties>
+		<property>
+			<type>TObjectPtr<UInputMappingContext></type>
+			<display_name>InputMappingContext</display_name>
+			<description>@brief The input mapping context for the character.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>LookMouseAction</display_name>
+			<description>@brief The input action for looking around with the mouse.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>LookAction</display_name>
+			<description>@brief The input action for looking around.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>MoveAction</display_name>
+			<description>@brief The input action for moving.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>SprintAction</display_name>
+			<description>@brief The input action for sprinting.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>WalkAction</display_name>
+			<description>@brief The input action for walking.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>CrouchAction</display_name>
+			<description>@brief The input action for crouching.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>JumpAction</display_name>
+			<description>@brief The input action for jumping.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>AimAction</display_name>
+			<description>@brief The input action for aiming.</description>
+		</property>
+		<property>
+			<type>float</type>
+			<display_name>LookUpMouseSensitivity</display_name>
+			<description>@brief The sensitivity for looking up with the mouse.</description>
+		</property>
+		<property>
+			<type>float</type>
+			<display_name>LookRightMouseSensitivity</display_name>
+			<description>@brief The sensitivity for looking right with the mouse.</description>
+		</property>
+		<property>
+			<type>float</type>
+			<display_name>LookUpRate</display_name>
+			<description>@brief The rate for looking up.</description>
+		</property>
+		<property>
+			<type>float</type>
+			<display_name>LookRightRate</display_name>
+			<description>@brief The rate for looking right.</description>
+		</property>
+		<property>
+			<type>bool</type>
+			<display_name>EnableDebug</display_name>
+			<description>@brief If true, enables debug mode.</description>
+		</property>
+		<property>
+			<type>TObjectPtr<UInputAction></type>
+			<display_name>SwitchViewModeAction</display_name>
+			<description>@brief The input action for switching view modes.</description>
+		</property>
+	</properties>
+	<nodes>
+		<node>
+			<id>DebugEnabled</id>
+			<shorttitle>Debug Enabled</shorttitle>
+			<description>@brief Get debug enabled</description>
+		</node>
+	</nodes>
+</root>

@@ -8,6 +8,12 @@ const apiIndexTemplate = require.resolve(`./src/templates/api-index-template`)
 const apiTemplate = require.resolve(`./src/templates/api-template`)
 const apiPrefixV2 = `/v2/api`
 const apiPrefixV3 = `/v3/api`
+const apiPrefixKdsCharacter = `/kdsCharacter/api`
+
+const { PassThrough } = require('stream');
+
+// Increase the limit to 20, or any other value
+PassThrough.setMaxListeners(20);
 
 const isXmlNode = ({ node }) => {
     // We only care about XML content.
@@ -112,34 +118,48 @@ exports.createPages = async ({ graphql, actions: { createPage }, reporter}) => {
         return
     }
 
-    createPage({
-        path: `/${apiPrefixV2}/`.replace(/\/\/+/g, `/`),
-        component: apiIndexTemplate,
-        context: {
-            prefix: apiPrefixV2,
-            slug: apiPrefixV2
-        }
-    })
+    // createPage({
+    //     path: `/${apiPrefixV2}/`.replace(/\/\/+/g, `/`),
+    //     component: apiIndexTemplate,
+    //     context: {
+    //         prefix: apiPrefixV2,
+    //         slug: apiPrefixV2
+    //     }
+    // })
+    //
+    // createPage({
+    //     path: `/${apiPrefixV3}/`.replace(/\/\/+/g, `/`),
+    //     component: apiIndexTemplate,
+    //     context: {
+    //         prefix: apiPrefixV3,
+    //         slug: apiPrefixV3
+    //     }
+    // })
+    //
+    // const v2Files = result.data.files.edges.filter(({ node }) => {
+    //     return /\/GASCompanionAPI\//.test(node.absolutePath)
+    // });
+    //
+    // const v3Files = result.data.files.edges.filter(({ node }) => {
+    //     return /\/GASCompanionAPI_v3\//.test(node.absolutePath)
+    // });
+
+    // CreateAPIPages(v2Files, apiPrefixV2, `GASCompanionAPI`, createPage)
+    // CreateAPIPages(v3Files, apiPrefixV3, `GASCompanionAPI_v3`, createPage)
 
     createPage({
-        path: `/${apiPrefixV3}/`.replace(/\/\/+/g, `/`),
+        path: `/${apiPrefixKdsCharacter}/`.replace(/\/\/+/g, `/`),
         component: apiIndexTemplate,
         context: {
-            prefix: apiPrefixV3,
-            slug: apiPrefixV3
+            prefix: apiPrefixKdsCharacter,
+            slug: apiPrefixKdsCharacter
         }
     })
-
-    const v2Files = result.data.files.edges.filter(({ node }) => {
-        return /\/GASCompanionAPI\//.test(node.absolutePath)
+    const kdsCharacterFiles = result.data.files.edges.filter(({ node }) => {
+        return /\/KdsCharacter\//.test(node.absolutePath)
     });
 
-    const v3Files = result.data.files.edges.filter(({ node }) => {
-        return /\/GASCompanionAPI_v3\//.test(node.absolutePath)
-    });
-
-    CreateAPIPages(v2Files, apiPrefixV2, `GASCompanionAPI`, createPage)
-    CreateAPIPages(v3Files, apiPrefixV3, `GASCompanionAPI_v3`, createPage)
+    CreateAPIPages(kdsCharacterFiles, apiPrefixKdsCharacter, `KdsCharacter`, createPage)
 }
 
 exports.onCreateNode = onCreateNode

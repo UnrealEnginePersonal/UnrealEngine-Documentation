@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>B_Kds_Core_GameMode_C</id>
+	<display_name>B_Kds_Core_GameMode</display_name>
+	<description></description>
+	<sourcepath>/KdsCharacter/Gamemodes/B_Kds_Core_GameMode</sourcepath>
+	<classTree>Object > Actor > Info > GameModeBase > B_Kds_Core_GameMode</classTree>
+	<properties>
+		<property>
+			<type>USceneComponent*</type>
+			<display_name>DefaultSceneRoot</display_name>
+			<description></description>
+		</property>
+	</properties>
+	<nodes />
+</root>

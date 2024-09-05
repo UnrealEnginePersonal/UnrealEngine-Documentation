@@ -1,5 +1,6 @@
 const path = require(`path`)
 
+
 module.exports = {
   // pathPrefix: `/`,
 
@@ -8,7 +9,7 @@ module.exports = {
     defaultTitle: `GAS Companion`,
     siteTitleShort: `GAS Companion`,
     siteDescription: `Documentation for GAS Companion: a Gameplay Ability System Starter and Template`,
-    siteUrl: `https://gascompanion.github.io`,
+    siteUrl: `https://localhost:9000`,
     siteAuthor: `https://mklabs.github.io`,
     siteImage: `/banner.png`,
     siteLanguage: `en`,
@@ -33,6 +34,7 @@ module.exports = {
       options: {
         name: `GAS Companion Documentation`,
         short_name: `GAS Companion Docs`,
+
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
@@ -47,8 +49,7 @@ module.exports = {
         path: path.join(__dirname, `src/GASCompanionAPI`),
       },
     },
-
-    {
+        {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `api`,
@@ -56,6 +57,13 @@ module.exports = {
       },
     },
 
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `api`,
+        path: path.join(__dirname, `src/KdsCharacter`),
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -88,7 +96,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://gascompanion.github.io`,
+        siteUrl: `https://localhost:9000`,
       },
     },
     `gatsby-plugin-offline`,

@@ -27,10 +27,15 @@ const Docs = ({ data, pageContext }) => {
         if (prefix === `/v3/api`)  {
             return /\/GASCompanionAPI_v3\//;
         }
+
+        if (prefix === `/kdsCharacter/api`)  {
+            return /\/KDS_CharacterAPI\//;
+        }
     }
 
     const isV2 = prefix.startsWith(`/v2/api`)
     const regex = getRegex();
+
     if (regex === undefined)  {
         console.error("no regex");
         return <></>;

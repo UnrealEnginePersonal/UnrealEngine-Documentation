@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<class_id>Kds_CharacterInputData</class_id>
+	<class_name>Kds_CharacterInputData</class_name>
+	<shorttitle>Debug Enabled</shorttitle>
+	<fulltitle>Debug Enabled</fulltitle>
+	<description>@brief Get debug enabled</description>
+	<imgpath>../img/nd_img_DebugEnabled.png</imgpath>
+	<category>Kds| Input</category>
+	<inputs>
+		<param>
+			<name>Target</name>
+			<type>Kds Character Input Data Object Reference</type>
+			<description></description>
+		</param>
+	</inputs>
+	<outputs>
+		<param>
+			<name>Return Value</name>
+			<type>Boolean</type>
+			<description>if debugging is enabled</description>
+		</param>
+	</outputs>
+</root>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<docs_name>KdsCharacter</docs_name>
+	<id>Kds_PlayerController</id>
+	<display_name>Kds_PlayerController</display_name>
+	<description>@brief The base player controller class for the KDS project.</description>
+	<sourcepath>Public/Core/Characters/Kds_PlayerController.h</sourcepath>
+	<classTree>Object > Actor > Controller > PlayerController > AlsPlayerController > Kds_PlayerController</classTree>
+	<properties />
+	<nodes />
+</root>
